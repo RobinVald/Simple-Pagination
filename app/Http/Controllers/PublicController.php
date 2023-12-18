@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PublicController extends Controller
 {
     public function index(){
-        $articles = Article::latest()->paginate(12);
+        $articles = Article::latest()->simplepaginate(12);
         return view('welcome', compact('articles'));
     }
 
@@ -18,7 +18,7 @@ class PublicController extends Controller
     }
 
     public function tag(Tag $tag){
-        $articles = $tag->articles()->paginate(12);
+        $articles = $tag->articles()->simplepaginate(12);
         return view('welcome', compact('articles'));
     }
 
